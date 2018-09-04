@@ -1,0 +1,50 @@
+// Zilla Slab from google fonts
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab:400,400i,600,600i');
+
+// Var declarations, mixins, functions etc always should be on top
+$fonts: (
+// This is a list of elements
+title1: 50px 60px,
+title2: 32px 40px,
+title3: 25px 30px,
+base: 20px 30px,
+small: 16px 20px,
+smaller: 14px 20px,
+);
+
+// Size could be anyone from the $fonts map
+@mixin font($size){
+  // nth($list, $n) returns an specific element from a list
+  font-size: nth(font($size),1);
+  line-height: nth(font($size), 2);
+}
+
+body{
+  font-family: 'Zilla Slab', sans-serif;
+  @include font(base);
+}
+
+
+h1,
+.title1{
+  @include font(title1);
+}
+
+h2,
+.title2{
+  @include font(title2);
+}
+
+h3,
+.title3{
+  @include font(title3);
+}
+
+small,
+.small{
+  @include font(small);
+}
+
+.smaller{
+  @include font(smaller);
+}
