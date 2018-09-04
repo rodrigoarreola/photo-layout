@@ -8,42 +8,73 @@ import cssnano from 'cssnano';
 
 const server = browserSync.create();
 
-const postCSSPlugins = [
-  cssnano({
-    core: false,
-    autoprefixer: {
-      add: true
-    }
-  })
-];
+// Static server
+gulp.task('serve', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./public"
+        }
+    });
+    gulp.watch("./dev/scss/**/*.scss", gulp.series('sass'));
+    // gulp.watch("./public/*.html").on('change', browserSync.reload);
+    gulp.watch("./dev/pug/**/*.pug", gulp.series('pug'));
+    gulp.watch("./public/*.html").on('change', browserSync.reload);
+});
 
-gulp.task('es6', () =>
-  gulp.src('./dev/js/*.js')
-  .pipe(babel())
-  .pipe(gulp.dest('./public/js'))
-);
+// Compile sass into CSS & auto-inject into browsers
+gulp.task('sass', function() {
+    return gulp.src("./dev/scss/*.scss")
+        .pipe(sass())
+        .pipe(gulp.dest("./public/css"))
+        .pipe(browserSync.stream());
+});
 
-gulp.task('sass', () =>
-  gulp.src('./dev/scss/styles.scss')
-    .pipe(sass())
-    .pipe(postcss(postCSSPlugins))
-    .pipe(gulp.dest('./public/css'))
-    .pipe(server.stream({match: '**/*.css'}))
-);
-
+// Compile pug into html
 gulp.task('pug', () =>
   gulp.src('./dev/pug/pages/*.pug')
     .pipe(pug())
     .pipe(gulp.dest('./public/'))
 );
 
-gulp.task('default', () => {
-  server.init({
-    server: {
-      baseDir: './public'
-    }
-  });
-  gulp.watch('./dev/js/*.js', gulp.series('es6',[server.reload]));
-  gulp.watch('./dev/pug/**/*.pug', gulp.series('pug', [server.reload]));
-  gulp.watch('./dev/scss/**/*.scss', gulp.series('sass'));
-});
+gulp.task('default', gulp.series('serve'));
+
+// const postCSSPlugins = [
+//   cssnano({
+//     core: false,
+//     autoprefixer: {
+//       add: true
+//     }
+//   })
+// ];
+
+
+// gulp.task('es6', () =>
+//   gulp.src('./dev/js/*.js')
+//   .pipe(babel())
+//   .pipe(gulp.dest('./public/js'))
+// );
+
+// gulp.task('sass', () =>
+//   gulp.src('./dev/scss/styles.scss')
+//     .pipe(sass())
+//     .pipe(postcss(postCSSPlugins))
+//     .pipe(gulp.dest('./public/css'))
+//     .pipe(server.stream({match: '**/*.css'}))
+// );
+
+// gulp.task('pug', () =>
+//   gulp.src('./dev/pug/pages/*.pug')
+//     .pipe(pug())
+//     .pipe(gulp.dest('./public/'))
+// );
+
+// gulp.task('default', () => {
+//   server.init({
+//     server: {
+//       baseDir: './public'
+//     }
+//   });
+//   gulp.watch('./dev/js/*.js', gulp.series('es6',[server.reload]));
+//   gulp.watch('./dev/pug/**/*.pug', gulp.series('pug', [server.reload]));
+//   gulp.watch('./dev/scss/**/*.scss', gulp.series('sass'));
+// });
