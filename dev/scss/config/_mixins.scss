@@ -1,0 +1,7 @@
+// Mixins are used with @include [name of the mixin]
+
+@mixin from($breakpoint){
+  @media screen and (min-width: map-get($brakpoints, $breakpoint)){
+    @content;
+  }
+}

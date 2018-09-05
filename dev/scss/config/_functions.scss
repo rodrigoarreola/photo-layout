@@ -1,3 +1,6 @@
+// Functions are used with property: [function(parameter)]
+// i.e. background-color: color(primary)
+
 // Para obtener un color del map colors
 @function color($key) {
   @if map-has-key($colors, $key) {

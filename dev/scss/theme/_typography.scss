@@ -12,6 +12,14 @@ small: 16px 20px,
 smaller: 14px 20px,
 );
 
+// Font weight
+$normal: 400;
+$semibold: 600;
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: $semibold;
+}
+
 // Size could be anyone from the $fonts map
 @mixin font($size){
   // nth($list, $n) returns an specific element from a list
@@ -25,19 +33,30 @@ body{
 }
 
 
-h1,
 .title1{
-  @include font(title1);
-}
-
-h2,
-.title2{
+  // Thinking of mobile-first the default font-size is title2
   @include font(title2);
+
+  // from large and boyond title1 is going to be used
+  @include from(large){
+    @include font(title1);
+  }
 }
 
-h3,
-.title3{
+.title2{
   @include font(title3);
+
+  @include from(large){
+    @include font(title2);
+  }
+}
+
+.title3{
+  @include font(base);
+
+  @include from(large){
+    @include font(title3);
+  }
 }
 
 small,
@@ -47,4 +66,26 @@ small,
 
 .smaller{
   @include font(smaller);
+}
+
+// Margins
+.title1{
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.title2,
+.title3{
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+.small,
+.smaller{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+a{
+  color: color(accent);
 }
