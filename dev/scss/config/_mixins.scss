@@ -5,3 +5,11 @@
     @content;
   }
 }
+
+
+// Size could be anyone from the $fonts map
+@mixin font($size){
+  // nth($list, $n) returns an specific element from a list
+  font-size: nth(font($size),1);
+  line-height: nth(font($size), 2);
+}

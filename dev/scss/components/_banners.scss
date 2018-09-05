@@ -1,0 +1,38 @@
+.banner{
+  background: url('../img/stories.jpg') center / cover no-repeat;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  position: relative;
+
+  // Opacity for the image
+  &::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(150deg, color(accent),color(primary));
+    opacity: 0.4;
+  }
+  &__copy{
+    text-align: center;
+    color: color(white);
+    // this replaces the z-index because of the position of this class
+    // (copy it's under ::before)
+    position: relative;
+  }
+
+  &__title{
+    @include font(title2);
+
+  }
+
+  &__subtitle{
+    background: rgba(color(primary), .7);
+    padding: .5em 2em;
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

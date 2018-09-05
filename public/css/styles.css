@@ -11,6 +11,68 @@ body {
 img {
   max-width: 100%; }
 
+.banner {
+  background: url("../img/stories.jpg") center/cover no-repeat;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  position: relative; }
+  .banner::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(150deg, #D4671F, #434343);
+    opacity: 0.4; }
+  .banner__copy {
+    text-align: center;
+    color: #FFF;
+    position: relative; }
+  .banner__title {
+    font-size: 32px;
+    line-height: 40px; }
+  .banner__subtitle {
+    background: rgba(67, 67, 67, 0.7);
+    padding: .5em 2em;
+    display: table;
+    margin-right: auto;
+    margin-left: auto; }
+
+.logo--main {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.menu,
+[class*="menu--"] {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  text-align: center; }
+  @media screen and (min-width: 1024px) {
+    .menu,
+    [class*="menu--"] {
+      display: flex;
+      justify-content: space-around; } }
+
+.menu__link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #434343; }
+  .menu__link.active {
+    color: #D4671F; }
+  @media screen and (min-width: 1024px) {
+    .menu__link {
+      display: block;
+      line-height: 3; } }
+
+.menu--main {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: rgba(67, 67, 67, 0.5); }
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600; }
 

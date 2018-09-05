@@ -1,0 +1,35 @@
+.menu,
+[class*="menu--"]{
+  list-style: none;
+
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+
+  text-align: center;
+
+  @include from(large){
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.menu__link{
+  text-decoration: none;
+  font-weight: $semibold;
+  color: color(primary);
+  &.active{
+    color: color(accent);
+  }
+
+  @include from(large){
+    display: block;
+    line-height: 3;
+  }
+}
+
+.menu--main{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: rgba(color(primary), .5);
+}

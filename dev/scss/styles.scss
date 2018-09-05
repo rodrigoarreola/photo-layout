@@ -6,4 +6,21 @@
 
 // Base
 @import 'base/base';
+
+// Layout
+@import 'layout/layout';
+
+// Components
+@import 'components/banners';
+@import 'components/forms';
+@import 'components/galleries';
+@import 'components/logo';
+@import 'components/menus';
+@import 'components/section';
+
+// Theme
 @import "theme/typography";
+@import 'theme/theme';
+
+// Utils
+@import 'utils/utils'

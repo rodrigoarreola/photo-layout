@@ -1,7 +1,10 @@
+// Var declarations, mixins, functions etc always should be on top
+
 $colors: (
   primary: #434343,
   secondary: #DEDEDE,
-  accent: #D4671F
+  accent: #D4671F,
+  white: #FFF
 );
 
 $brakpoints: (
@@ -10,3 +13,17 @@ $brakpoints: (
   large: 1024px,
   extra-large: 1440px
 );
+
+// This is a list of elements
+$fonts: (
+  title1: 50px 60px,
+  title2: 32px 40px,
+  title3: 25px 30px,
+  base: 20px 30px,
+  small: 16px 20px,
+  smaller: 14px 20px,
+);
+
+// Font weight
+$normal: 400;
+$semibold: 600;
