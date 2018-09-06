@@ -25,6 +25,11 @@
   @include from(large){
     display: flex;
   }
+  &__title{
+    color: color(white);
+    position: relative;
+    text-align: center;
+  }
   &__img{
     display: none;
     @include from(large){

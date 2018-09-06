@@ -23,6 +23,7 @@
 }
 
 .form--contact{
+  max-width: 90%;
   @include from(large){
     width: 60%;
     margin-left: auto;
