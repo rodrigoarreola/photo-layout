@@ -11,6 +11,53 @@ body {
 img {
   max-width: 100%; }
 
+.about-container {
+  background: url("../img/about.jpg");
+  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+  background-size: cover;
+  background-position: center center;
+  padding: 3em;
+  position: relative; }
+  .about-container:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #434343;
+    opacity: 0.3; }
+
+.about {
+  position: relative;
+  width: 80%;
+  margin-left: 10%; }
+  @media screen and (min-width: 1024px) {
+    .about {
+      display: flex; } }
+  .about__img {
+    display: none; }
+    @media screen and (min-width: 1024px) {
+      .about__img {
+        display: block;
+        width: 50%;
+        box-shadow: 0 10px 10px -5px #000;
+        object-fit: cover; } }
+  .about__description {
+    background: rgba(212, 103, 31, 0.8);
+    color: #FFF;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 1em; }
+    @media screen and (min-width: 1024px) {
+      .about__description {
+        width: 50%;
+        align-self: center;
+        font-size: 20px;
+        line-height: 30px;
+        margin-left: -2em;
+        padding: 1em 3em; } }
+
 .banner {
   background: url("../img/stories.jpg") center/cover no-repeat;
   padding-top: 5em;
