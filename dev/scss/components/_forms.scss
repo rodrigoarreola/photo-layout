@@ -1,0 +1,31 @@
+.form,
+[class*="form--"]{
+  input, textarea{
+    width: 100%;
+    display: block;
+    padding-left: 1em;
+  }
+
+  input{
+    line-height: 3;
+  }
+  textarea{
+    padding: 1em;
+  }
+}
+
+.form__item{
+  margin-bottom: 2em;
+}
+
+.form__submit{
+  @include button(primary);
+}
+
+.form--contact{
+  @include from(large){
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

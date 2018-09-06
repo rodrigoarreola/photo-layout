@@ -4,6 +4,11 @@
   padding-bottom: 5em;
   position: relative;
 
+  @include from(large){
+    padding-top: 10em;
+    padding-bottom: 10em;
+  }
+
   // Opacity for the image
   &::before{
     content: '';
@@ -21,11 +26,20 @@
     // this replaces the z-index because of the position of this class
     // (copy it's under ::before)
     position: relative;
+
+    @include from(large){
+      text-align: right;
+      padding-right: 3em;
+    }
   }
 
   &__title{
     @include font(title2);
 
+    @include from(large){
+      @include font(title1);
+      margin-bottom: 0;
+    }
   }
 
   &__subtitle{
@@ -34,5 +48,9 @@
     display: table;
     margin-right: auto;
     margin-left: auto;
+
+    @include from(large){
+      margin-right: -6em;
+    }
   }
 }

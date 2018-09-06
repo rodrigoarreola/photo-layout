@@ -13,3 +13,18 @@
   font-size: nth(font($size),1);
   line-height: nth(font($size), 2);
 }
+
+// Buttons style
+@mixin button($type){
+  @if $type == primary{
+    background: color(accent);
+    color: color(white);
+  } @else if $type == secondary{
+    background: color(secondary);
+    color: color(white);
+  }
+  line-height: 3;
+  border: 1px solid color(white);
+  font-family: "Zilla Slab", serif;
+  @include font(title3);
+}
