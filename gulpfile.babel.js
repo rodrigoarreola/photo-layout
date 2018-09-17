@@ -5,7 +5,8 @@ import browserSync from 'browser-sync';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import cssnano from 'cssnano';
-import gulpConcat from 'gulp-concat';
+import concat from 'gulp-concat';
+import uglify from 'gulp-uglify';
 
 
 const server = browserSync.create();
@@ -20,6 +21,8 @@ gulp.task('serve', function() {
     gulp.watch("./dev/scss/**/*.scss", gulp.series('sass'));
     gulp.watch("./dev/js/**/*.js", gulp.series('scripts'));
     gulp.watch("./dev/pug/**/*.pug", gulp.series('pug'));
+
+    gulp.watch("./public/js/*.js").on('change', browserSync.reload);
     gulp.watch("./public/*.html").on('change', browserSync.reload);
 });
 
@@ -39,10 +42,10 @@ gulp.task('pug', () =>
 );
 
 gulp.task('scripts', function() {
-  gulp.src('./dev/js/*.js')
-    .pipe(concat('all.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./js/'))
+  return gulp.src('./dev/js/*.js')
+    .pipe(concat('scripts.js'))
+    // .pipe(uglify())
+    .pipe(gulp.dest('./public/js/'))
 });
 
 gulp.task('default', gulp.series('serve'));

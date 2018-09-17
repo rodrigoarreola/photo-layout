@@ -10,7 +10,7 @@
   
   .grid-gallery.l-container--full
     -for(var i=1; i<=12; i++)
-      .grid-gallery__item
+      a(href="img/photo"+i+".jpg", data-fancybox="gallery").grid-gallery__item
         img(src="img/photo"+i+".jpg").grid-gallery__img
               
     
