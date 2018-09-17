@@ -5,6 +5,8 @@ import browserSync from 'browser-sync';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import cssnano from 'cssnano';
+import gulpConcat from 'gulp-concat';
+
 
 const server = browserSync.create();
 
@@ -16,7 +18,7 @@ gulp.task('serve', function() {
         }
     });
     gulp.watch("./dev/scss/**/*.scss", gulp.series('sass'));
-    // gulp.watch("./public/*.html").on('change', browserSync.reload);
+    gulp.watch("./dev/js/**/*.js", gulp.series('scripts'));
     gulp.watch("./dev/pug/**/*.pug", gulp.series('pug'));
     gulp.watch("./public/*.html").on('change', browserSync.reload);
 });
@@ -36,7 +38,20 @@ gulp.task('pug', () =>
     .pipe(gulp.dest('./public/'))
 );
 
+gulp.task('scripts', function() {
+  gulp.src('./dev/js/*.js')
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./js/'))
+});
+
 gulp.task('default', gulp.series('serve'));
+// gulp.task('es6', () =>
+//   gulp.src('./dev/js/*.js')
+//   // .pipe(babel())
+//   .pipe(gulp.dest('./public/js'))
+// );
+
 
 // const postCSSPlugins = [
 //   cssnano({
