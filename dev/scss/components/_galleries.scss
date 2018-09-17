@@ -12,8 +12,9 @@
   }
 
   &__item{
-    width: 47vw;
-    height: 47vw;
+    margin: 3px;
+    width: 30vw;
+    height: 30vw;
 
     @include from(medium){
       width: 31vw;
@@ -73,7 +74,7 @@
       grid-column: span 2;
     }
   }
-  
+
   &__img{
     width: 100%;
     height: 100%;
